@@ -1,0 +1,17 @@
+{
+    "aps": {
+        "alert": {
+            "body": "Time to start your workout!",
+            "title": "Workout!"
+        },
+        "category": "workout",
+        "thread-id":"5280"
+    },
+    
+    "WatchKit Simulator Actions": [
+	   {
+		   "title": "Start Workout",
+		   "identifier": "startWorkoutAction"
+	   }
+    ]
+}

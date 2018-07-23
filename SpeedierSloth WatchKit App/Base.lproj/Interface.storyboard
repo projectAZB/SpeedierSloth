@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
+    </dependencies>
+    <scenes>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="rSK-0h-UOO">
+            <objects>
+                <notificationController id="7rb-KX-F9w">
+                    <items>
+                        <label width="1" alignment="left" text="Alert Label" textAlignment="center" numberOfLines="0" id="YkL-WM-f0i"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="Rcb-jJ-g5e"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="YkL-WM-f0i" id="Q1L-bi-aKL"/>
+                        <segue destination="ZYv-uI-CvU" kind="relationship" relationship="dynamicNotificationInterface" id="zge-Tu-7C0"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="48" y="-290"/>
+        </scene>
+        <!--Alarm-->
+        <scene sceneID="jMC-Zq-W7O">
+            <objects>
+                <controller identifier="Alarm" id="8gr-9s-S6l" customClass="AlarmInterfaceController" customModule="SpeedierSloth_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="LEC-tv-yeq">
+                            <items>
+                                <label alignment="center" text="Workout Alarm" id="TOL-9e-xiA"/>
+                                <group width="1" alignment="left" verticalAlignment="center" spacing="0.0" id="qzx-9Z-SX4">
+                                    <items>
+                                        <picker width="0.45000000000000001" height="100" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="Kng-wg-8Xp">
+                                            <connections>
+                                                <action selector="hourPickerChanged:" destination="8gr-9s-S6l" id="y9X-GH-IGG"/>
+                                            </connections>
+                                        </picker>
+                                        <label width="0.10000000000000001" alignment="center" verticalAlignment="center" text=":" textAlignment="center" id="mgr-g2-UWO">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                        <picker width="0.45000000000000001" height="100" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="eOf-Ta-v4J">
+                                            <connections>
+                                                <action selector="minutePickerChanged:" destination="8gr-9s-S6l" id="VUH-dn-H4e"/>
+                                            </connections>
+                                        </picker>
+                                    </items>
+                                    <edgeInsets key="margins" left="4" right="4" top="0.0" bottom="0.0"/>
+                                </group>
+                                <button width="1" alignment="left" verticalAlignment="bottom" title="Set" id="Ya8-8C-T0j">
+                                    <connections>
+                                        <action selector="setButtonTapped" destination="8gr-9s-S6l" id="Z9A-1t-BMm"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="hourPicker" destination="Kng-wg-8Xp" id="viE-uj-lA9"/>
+                        <outlet property="minutePicker" destination="eOf-Ta-v4J" id="Bfg-39-sb4"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="48" y="-7"/>
+        </scene>
+        <!--Configuration-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="Configuration" id="AgC-eL-Hgc" customClass="ConfigurationInterfaceController" customModule="SpeedierSloth_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="tJy-bs-YAB">
+                            <items>
+                                <label alignment="left" verticalAlignment="bottom" text="Activity Type" id="1gz-0e-Ona">
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                </label>
+                                <button width="24" height="24" alignment="right" backgroundImage="alarm" id="pfA-m0-Hfj">
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="alarmTapped" destination="AgC-eL-Hgc" id="1fx-AM-H4u"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="8" top="0.0" bottom="0.0"/>
+                        </group>
+                        <picker height="38" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="VUH-3w-ugU">
+                            <connections>
+                                <action selector="activityTypePickerSelectedItemChangedWithValue:" destination="AgC-eL-Hgc" id="us4-dl-3XS"/>
+                            </connections>
+                        </picker>
+                        <label alignment="left" text="Location Type" id="hiU-ey-vXd">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <picker height="38" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="hNV-If-GXb">
+                            <connections>
+                                <action selector="locationTypePickerSelectedItemChangedWithValue:" destination="AgC-eL-Hgc" id="jS0-DD-sof"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="wyX-Wj-ZiG">
+                            <connections>
+                                <action selector="didTapStartButton" destination="AgC-eL-Hgc" id="f0h-dL-Jd3"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="_activityTypePicker" destination="VUH-3w-ugU" id="lef-Xg-ZP3"/>
+                        <outlet property="_locationTypePicker" destination="hNV-If-GXb" id="gnV-Aa-Zcd"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="48" y="272"/>
+        </scene>
+        <!--Workout-->
+        <scene sceneID="1of-Bl-M1i">
+            <objects>
+                <controller identifier="Workout" id="Ci8-tm-wM1" customClass="WorkoutInterfaceController" customModule="SpeedierSloth_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" spacing="1" id="1fb-DI-yDO">
+                            <items>
+                                <label alignment="right" text="0:10:47" id="KpS-ir-m8Y">
+                                    <color key="textColor" red="0.15813224022860484" green="0.9998810887336731" blue="0.27694365440489671" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
+                                </label>
+                                <separator width="0.94999999999999996" alignment="left" id="U3J-Bm-t0G">
+                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </separator>
+                                <label alignment="left" text="Calories" id="2FN-vm-vu1">
+                                    <color key="textColor" red="0.75876825301262862" green="0.55228807489314979" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                                <label alignment="left" text="Distance" id="jUa-oE-oQE">
+                                    <color key="textColor" red="0.0" green="0.56638695100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                                <label alignment="left" text="BPM" id="rh5-KX-XUx">
+                                    <color key="textColor" red="0.80784313725490198" green="0.29803921568627451" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
+                        </group>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="FHf-ZU-2ts">
+                            <items>
+                                <button width="0.5" alignment="left" title="Pause" id="NSM-3G-LEh">
+                                    <connections>
+                                        <action selector="didTapPauseResumeButton" destination="Ci8-tm-wM1" id="fOe-T1-VMI"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" alignment="left" title="Marker" id="WCm-Oj-Jqr">
+                                    <connections>
+                                        <action selector="didTapMarkerButton" destination="Ci8-tm-wM1" id="aMf-vF-4QO"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="1" alignment="right" verticalAlignment="bottom" title="Stop" id="Tk4-pb-OSy">
+                            <connections>
+                                <action selector="didTapStopButton" destination="Ci8-tm-wM1" id="mLE-u9-0Ju"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="_bpmLabel" destination="rh5-KX-XUx" id="aff-0F-7qH"/>
+                        <outlet property="_caloriesLabel" destination="2FN-vm-vu1" id="vgS-3I-ADa"/>
+                        <outlet property="_distanceLabel" destination="jUa-oE-oQE" id="bXD-rf-dPf"/>
+                        <outlet property="_durationLabel" destination="KpS-ir-m8Y" id="AQx-XK-pGK"/>
+                        <outlet property="_pauseResumeButton" destination="NSM-3G-LEh" id="gy5-FC-mx2"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="284" y="272"/>
+        </scene>
+        <!--Summary-->
+        <scene sceneID="O8l-9G-Bhn">
+            <objects>
+                <controller identifier="Summary" id="ti4-5k-cfO" customClass="SummaryInterfaceController" customModule="SpeedierSloth_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Workout" id="dyN-lb-MVV"/>
+                        <label alignment="left" text="Duration" id="2BM-Y5-1Ds">
+                            <color key="textColor" red="0.23137254901960785" green="0.99215686274509807" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="left" text="Calories" id="C8C-sd-ERn">
+                            <color key="textColor" red="0.75294117647058822" green="0.56470588235294117" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <label alignment="left" text="Distance" id="ANK-QW-0DO">
+                            <color key="textColor" red="0.0" green="0.56638695100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Done" id="09x-24-dEm">
+                            <connections>
+                                <action selector="didTapDoneButton" destination="ti4-5k-cfO" id="gEc-a0-jmw"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <menu key="menu" id="d99-s6-var">
+                        <items>
+                            <menuItem title="Delete" icon="trash" id="Vdb-5f-zu0">
+                                <connections>
+                                    <action selector="deleteAction" destination="ti4-5k-cfO" id="WaJ-hY-Dgx"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="_caloriesLabel" destination="C8C-sd-ERn" id="GGL-io-jwa"/>
+                        <outlet property="_distanceLabel" destination="ANK-QW-0DO" id="zbs-cl-LcI"/>
+                        <outlet property="_durationLabel" destination="2BM-Y5-1Ds" id="zFk-jH-ygU"/>
+                        <outlet property="_workoutLabel" destination="dyN-lb-MVV" id="iVM-uU-qR1"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="523" y="272"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ttX-9O-Pod">
+            <objects>
+                <controller id="ZYv-uI-CvU" customClass="NotificationController" customModule="SpeedierSloth_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" id="ktv-8r-D6M">
+                            <items>
+                                <imageView width="60" height="40" alignment="center" verticalAlignment="center" image="run" id="ucZ-eW-fW2">
+                                    <color key="tintColor" red="0.83921568627450982" green="0.12941176470588237" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </imageView>
+                            </items>
+                            <edgeInsets key="margins" left="16" right="16" top="16" bottom="16"/>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="283" y="-291"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</document>
